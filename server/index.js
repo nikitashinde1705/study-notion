@@ -24,7 +24,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
     cors({
-        origin: process.env.PROD_HOST,
+        //origin: process.env.PROD_HOST,
+        origin: "https://studynotionmega.netlify.app",
         credentials:true,
     })
 )
