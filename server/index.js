@@ -23,17 +23,11 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-  cors({
-    origin: true,
-    credentials: true,
-  })
-);
-// app.use(
-//     cors({
-//         origin: process.env.PROD_HOST,
-//         credentials:true,
-//     })
-// )
+    cors({
+        origin: process.env.PROD_HOST,
+        credentials:true,
+    })
+)
 
 app.use(
     fileUpload({
