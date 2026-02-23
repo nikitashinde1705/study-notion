@@ -3,13 +3,21 @@ const nodemailer = require("nodemailer");
 //this function is for send OTP via email
 const mailSender = async (email, title, body) => {
     try{
+        // let transporter = nodemailer.createTransport({
+        //     host:process.env.MAIL_HOST,
+        //     auth:{
+        //         user: process.env.MAIL_USER,
+        //         pass: process.env.MAIL_PASS,
+        //     }
+        // })
+
         let transporter = nodemailer.createTransport({
-            host:process.env.MAIL_HOST,
-            auth:{
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS,
-            }
-        })
+        service: "gmail",
+        auth: {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS,
+        },
+    });
 
         let info = await transporter.sendMail({
             from:'StudyNotion || CodHelp - by Nikita',
