@@ -87,6 +87,12 @@ export const contactusEndpoint = {
     BASE_URL + "/api/v1/reach/contact",
 }
 
+// ================= RATINGS AND REVIEWS =================
+export const ratingsEndpoints = {
+  REVIEWS_DETAILS_API:
+    BASE_URL + "/api/v1/course/getReviews",
+}
+
 // ================= SETTINGS PAGE API =================
 export const settingsEndpoints = {
   CHANGE_PASSWORD_API:
