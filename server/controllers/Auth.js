@@ -34,7 +34,7 @@ exports.signup = async (req, res) => {
 
         //Check if password and confirm password match
         if(password !== confirmPassword){
-            return res.success(400).json({
+            return res.status(400).json({
                 success:false,
                 message:"Password and Confirm Password do not match. Please try again.",
             });
@@ -158,8 +158,10 @@ exports.login = async (req, res) => {
 
             //create cookie for token and return success response
             const options = {
-                expires: new Date(Date.now() + 3 * 24* 60 * 60 * 1000),
-                httpOnly:true,
+                expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+                httpOnly: true,
+                secure: true,
+                sameSite: "none",
             };
            res.cookie('token', token, options).status(200).json({
             success:true,

@@ -6,7 +6,7 @@ import CountryCode from "../../data/countrycode.json"
 
 const ContactUsForm = () => {
 
-    const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const {
     register,
     handleSubmit,
@@ -15,15 +15,13 @@ const ContactUsForm = () => {
   } = useForm()
 
   const submitContactForm = async (data) => {
-    // console.log("Form Data - ", data)
     try {
       setLoading(true)
-      const res = await apiConnector(
+      await apiConnector(   // ✅ removed const res
         "POST",
         contactusEndpoint.CONTACT_US_API,
         data
       )
-      // console.log("Email Res - ", res)
       setLoading(false)
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
@@ -184,142 +182,7 @@ const ContactUsForm = () => {
         Send Message
       </button>
     </form>
-    // <form onSubmit={handleSubmit(submitContactForm)}>
-
-    //     <div className='flex flex-col gap-14'>
-    //         <div className='flex gap-5'>
-    //         {/* firstName */}
-    //         <div className='flex flex-col'>
-    //             <label htmlFor='firstname' >First Name</label>
-    //             <input 
-    //             type="text"
-    //             name='firstname'
-    //             id='firstname'
-    //             placeholder='Enter first name'
-    //             className='text-black'
-    //             {...register("firstname", {required:true})}
-                
-    //             />
-    //             {
-    //                 errors.firstname && (
-    //                     <span>
-    //                         Please enter Your name
-    //                     </span>
-    //                 )
-    //             }
-    //         </div>
-    //         {/* lastName */}
-    //         <div className='flex flex-col'>
-    //             <label htmlFor='lastname' >Last Name</label>
-    //             <input 
-    //             type="text"
-    //             name='lastname'
-    //             id='lastname'
-    //             placeholder='Enter last name'
-    //             className='text-black'
-    //             {...register("lastname")}
-                
-    //             />
-        
-    //         </div>
-    //     </div>
-
-    //     {/* email */}
-    //         <div className='flex flex-col'>
-    //             <label htmlFor="email">Email Address</label>
-    //             <input 
-    //             type="email" 
-    //             name='email'
-    //             id='email'
-    //             placeholder='Enter email Address'
-    //             className='text-black'
-    //             {...register("email", {required:true})}
-    //             />
-    //             {
-    //                 errors.email && (
-    //                     <span>
-    //                         Please enter your email address
-    //                     </span>
-    //                 )
-    //             }
-    //         </div>
-
-    //     {/* phone no */}
-    //     <div className='flex flex-col'>
-    //         <label htmlFor="phonenumber">Phone Number</label>
-
-    //         <div className='flex flex-row gap-1'>
-    //             {/* dropdown */}
-                
-    //                 <select 
-    //                 name="dropdown" 
-    //                 id="dropdown"
-    //                 className='bg-yellow-50 w-[80px]'
-    //                 {...register("countrycode", {required:true})}
-    //                 >
-    //                     {
-    //                         CountryCode.map( (element, index) =>{
-    //                             return  (
-    //                                 <option key={index} value={element.code}>
-    //                                     {element.code} - {element.country}
-    //                                 </option>
-    //                             )
-    //                         })
-    //                     }
-    //                 </select>
-
-    //                 <input 
-    //                 type="number"
-    //                 id='phonenumber'
-    //                 placeholder='12345 67890'
-    //                 className='text-black w-[calc(100%-90px)]'
-    //                 {...register("phoneNo", 
-    //                 { 
-    //                     required:{value:true, message:"Please enter phone Number"},
-    //                     maxLength: {value:10, message:"Invalid Phone Number"},
-    //                     minLength: {value:8, message:"Invalid Phone Number"}
-    //                     } )} />
-               
-    //         </div>
-    //         {
-    //             errors.phoneNo && (
-    //                 <span>
-    //                     {errors.phoneNo.message}
-    //                 </span>
-    //             )
-    //         }
-
-    //     </div>
-
-    //         {/* message */}
-    //         <div className='flex flex-col'>
-    //             <label htmlFor="message">Message</label>
-    //             <textarea
-    //             name='message'
-    //             id='message'
-    //             rows="7"
-    //             cols="30"
-    //             placeholder='Enter Your Message'
-    //             className='text-black'
-    //             {...register("message", {required:true})}
-                
-    //             />
-    //             {
-    //                 errors.message && (
-    //                     <span>
-    //                         Please enter your message.
-    //                     </span>
-    //                 )
-    //             }
-    //         </div>
-
-    //     <button type='submit'
-    //     className='rounded-md bg-yellow-50 text-center px-6 text-[16px] text-black'>
-    //             Send Message
-    //     </button>
-    //     </div>
-
-    // </form>
+    
   )
 }
 
