@@ -11,7 +11,8 @@ export const endpoints = {
 
 // ================= PROFILE ENDPOINTS =================
 export const profileEndpoints = {
-  GET_USER_DETAILS_API: BASE_URL + "/api/v1/profile/getUserDetails",
+  GET_USER_DETAILS_API:
+    BASE_URL + "/api/v1/profile/getUserDetails",
   GET_USER_ENROLLED_COURSES_API:
     BASE_URL + "/api/v1/profile/getEnrolledCourses",
   GET_INSTRUCTOR_DATA_API:
@@ -74,6 +75,12 @@ export const courseEndpoints = {
     BASE_URL + "/api/v1/course/getCategoryPageDetails",
 }
 
+// ================= CATEGORIES API =================
+export const categories = {
+  CATEGORIES_API:
+    BASE_URL + "/api/v1/course/showAllCategories",
+}
+
 // ================= CONTACT-US API =================
 export const contactusEndpoint = {
   CONTACT_US_API:
@@ -85,9 +92,6 @@ export const settingsEndpoints = {
   CHANGE_PASSWORD_API:
     BASE_URL + "/api/v1/auth/changepassword",
 }
-
-
-
 
 
 
