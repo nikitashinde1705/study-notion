@@ -1,3 +1,47 @@
+const nodemailer = require("nodemailer");
+
+const mailSender = async (email, title, body) => {
+    try {
+        let transporter = nodemailer.createTransport({
+            host: "smtp-relay.brevo.com",
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.BREVO_USER,
+                pass: process.env.BREVO_PASS,
+            },
+        });
+
+        let info = await transporter.sendMail({
+            from: `StudyNotion <${process.env.BREVO_USER}>`,
+            to: email,
+            subject: title,
+            html: body,
+        });
+
+        console.log("Email sent successfully:", info);
+        return info;
+
+    } catch (error) {
+        console.error("MAIL ERROR:", error);
+        throw error;
+    }
+};
+
+module.exports = mailSender;
+
+
+
+
+
+
+
+
+
+
+
+
+
 // const nodemailer = require("nodemailer");
 
 // //this function is for send OTP via email
@@ -96,27 +140,27 @@
 
 
 
-const { Resend } = require("resend");
+// const { Resend } = require("resend");
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// const resend = new Resend(process.env.RESEND_API_KEY);
 
-const mailSender = async (email, title, body) => {
-    try {
-        const info = await resend.emails.send({
-            from: `StudyNotion <${process.env.RESEND_MAIL}>`,
-            to: email,
-            subject: title,
-            html: body,
-        });
+// const mailSender = async (email, title, body) => {
+//     try {
+//         const info = await resend.emails.send({
+//             from: `StudyNotion <${process.env.RESEND_MAIL}>`,
+//             to: email,
+//             subject: title,
+//             html: body,
+//         });
 
-        console.log("Email sent successfully:", info);
-        return info;
+//         console.log("Email sent successfully:", info);
+//         return info;
 
-    } catch (error) {
-        console.error("MAIL ERROR:", error);
-        throw error;
-    }
-};
+//     } catch (error) {
+//         console.error("MAIL ERROR:", error);
+//         throw error;
+//     }
+// };
 
-module.exports = mailSender;
+// module.exports = mailSender;
 
