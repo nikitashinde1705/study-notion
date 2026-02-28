@@ -103,7 +103,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const mailSender = async (email, title, body) => {
     try {
         const info = await resend.emails.send({
-            from: `StudyNotion ${process.env.RESEND_MAIL}`,
+            from: `StudyNotion <${process.env.RESEND_MAIL}>`,
             to: email,
             subject: title,
             html: body,
