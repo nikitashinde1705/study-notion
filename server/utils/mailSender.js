@@ -1,47 +1,47 @@
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
-//this function is for send OTP via email
-const mailSender = async (email, title, body) => {
-    try{
-        // let transporter = nodemailer.createTransport({
-        //     host:process.env.MAIL_HOST,
-        //     auth:{
-        //         user: process.env.MAIL_USER,
-        //         pass: process.env.MAIL_PASS,
-        //     }
-        // })
+// //this function is for send OTP via email
+// const mailSender = async (email, title, body) => {
+//     try{
+//         // let transporter = nodemailer.createTransport({
+//         //     host:process.env.MAIL_HOST,
+//         //     auth:{
+//         //         user: process.env.MAIL_USER,
+//         //         pass: process.env.MAIL_PASS,
+//         //     }
+//         // })
 
-        let transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
-        auth: {
-            user: process.env.MAIL_USER,
-            pass: process.env.MAIL_PASS,
-        },
-        tls: {
-            rejectUnauthorized: false,
-        },
-        });
+//         let transporter = nodemailer.createTransport({
+//         host: "smtp.gmail.com",
+//         port: 587,
+//         secure: false,
+//         auth: {
+//             user: process.env.MAIL_USER,
+//             pass: process.env.MAIL_PASS,
+//         },
+//         tls: {
+//             rejectUnauthorized: false,
+//         },
+//         });
 
-        let info = await transporter.sendMail({
-            from:'StudyNotion || CodHelp - by Nikita',
-            to:`${email}`,
-            subject:`${title}`,
-            html:`${body},`
-        })
-        console.log(info);
-        return info;
-    }
+//         let info = await transporter.sendMail({
+//             from:'StudyNotion || CodHelp - by Nikita',
+//             to:`${email}`,
+//             subject:`${title}`,
+//             html:`${body},`
+//         })
+//         console.log(info);
+//         return info;
+//     }
 
-    catch(error){
-        console.error("MAIL ERROR:", error);
-        throw error; // IMPORTANT
-        //console.log(error.message);
-    }
-}
+//     catch(error){
+//         console.error("MAIL ERROR:", error);
+//         throw error; // IMPORTANT
+//         //console.log(error.message);
+//     }
+// }
 
-module.exports = mailSender;
+// module.exports = mailSender;
 
 
 // const sgMail = require("@sendgrid/mail");
@@ -68,3 +68,55 @@ module.exports = mailSender;
 // };
 
 // module.exports = mailSender;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+const mailSender = async (email, title, body) => {
+    try {
+        const info = await resend.emails.send({
+            from: "StudyNotion <onboarding@resend.dev>",
+            to: email,
+            subject: title,
+            html: body,
+        });
+
+        console.log("Email sent successfully:", info);
+        return info;
+
+    } catch (error) {
+        console.error("MAIL ERROR:", error);
+        throw error;
+    }
+};
+
+module.exports = mailSender;
+
