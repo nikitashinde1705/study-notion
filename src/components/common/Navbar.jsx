@@ -170,7 +170,7 @@ function Navbar() {
           ></div>
 
           {/* Side menu */}
-          <div className="absolute right-0 top-0 h-full w-[250px] bg-richblack-800 p-6">
+          <div className="absolute right-0 top-0 h-full w-[280px] sm:w-[300px] bg-richblack-800 p-6 shadow-xl transition-all duration-300">
             
             {/* Close button */}
             <div className="flex justify-end">
@@ -185,27 +185,6 @@ function Navbar() {
             {/* Links */}
             <div className="mt-6 flex flex-col gap-6 text-richblack-25">
              
-              {/* {NavbarLinks.map((link, index) => {
-              const isActive = location.pathname === link?.path
-
-              return (
-                <Link
-                  key={index}
-                  to={link?.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <p
-                    className={`block py-2 text-lg transition-all duration-200 ${
-                      isActive
-                        ? "text-yellow-25 font-semibold"
-                        : "text-richblack-25 hover:text-yellow-25"
-                    }`}
-                  >
-                    {link.title}
-                  </p>
-                </Link>
-              )
-            })} */}
             {NavbarLinks.map((link, index) => {
 
   if (link.title === "Catalog") {
@@ -215,7 +194,7 @@ function Navbar() {
         {/* Catalog Toggle */}
         <button
           onClick={() => setMobileCatalogOpen(!mobileCatalogOpen)}
-          className="flex items-center justify-between w-full py-2 text-lg text-richblack-25 hover:text-yellow-25"
+          className="flex items-center justify-between w-full rounded-lg px-3 py-3 text-lg text-richblack-25 transition-all duration-200 hover:bg-richblack-700 hover:text-yellow-25"
         >
           <span>Catalog</span>
           <BsChevronDown
@@ -241,7 +220,7 @@ function Navbar() {
                     setMobileMenuOpen(false)
                     setMobileCatalogOpen(false)
                   }}
-                  className="text-richblack-300 hover:text-yellow-25"
+                  className="rounded-md px-3 py-2 text-richblack-300 transition-all duration-200 hover:bg-richblack-700 hover:text-yellow-25"
                 >
                   {subLink.name}
                 </Link>
@@ -262,18 +241,66 @@ function Navbar() {
       onClick={() => setMobileMenuOpen(false)}
     >
       <p
-        className={`block py-2 text-lg transition-all duration-200 ${
-          isActive
-            ? "text-yellow-25 font-semibold"
-            : "text-richblack-25 hover:text-yellow-25"
-        }`}
-      >
+  className={`flex items-center rounded-lg px-3 py-3 text-lg transition-all duration-200 ${
+    isActive
+      ? "bg-richblack-700 text-yellow-25 font-semibold"
+      : "text-richblack-25 hover:bg-richblack-700 hover:text-yellow-25"
+  }`}
+>
         {link.title}
       </p>
     </Link>
   )
 })}
             </div>
+
+
+            {/* Mobile Auth Section */}
+<div className="mt-6 flex flex-col gap-4 border-t border-richblack-700 pt-4">
+
+  {user && user?.accountType !== ACCOUNT_TYPE.INSTRUCTOR && (
+    <Link
+      to="/dashboard/cart"
+      onClick={() => setMobileMenuOpen(false)}
+      className="flex items-center gap-3 rounded-lg px-3 py-3 text-richblack-25 transition-all duration-200 hover:bg-richblack-700 hover:text-yellow-25"
+    >
+      <AiOutlineShoppingCart className="text-xl" />
+      <span>Cart</span>
+
+      {totalItems > 0 && (
+        <span className="ml-2 rounded-full bg-richblack-600 px-2 py-1 text-xs text-yellow-100">
+          {totalItems}
+        </span>
+      )}
+    </Link>
+  )}
+
+  {token === null && (
+    <Link to="/login" onClick={() => setMobileMenuOpen(false)}>
+      <button className="w-full rounded-lg border border-richblack-600 bg-richblack-800 px-4 py-3 text-richblack-100 transition-all duration-200 hover:bg-richblack-700">
+        Log in
+      </button>
+    </Link>
+  )}
+
+  {token === null && (
+    <Link to="/signup" onClick={() => setMobileMenuOpen(false)}>
+      <button className="w-full rounded-lg border border-richblack-600 bg-richblack-800 px-4 py-3 text-richblack-100 transition-all duration-200 hover:bg-richblack-700">
+        Sign up
+      </button>
+    </Link>
+  )}
+
+  {token !== null && (
+    <div className="flex items-center">
+      <ProfileDropdown />
+    </div>
+  )}
+
+</div>
+
+
+
 
           </div>
         </div>
