@@ -1,31 +1,37 @@
-# React & Tailwind CSS Starter Pack
+# 📚 StudyNotion – EdTech Platform
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+## 🚀 Overview
+StudyNotion is a full-stack EdTech web application where students can explore and purchase courses, and instructors can create and manage content.  
+It provides secure authentication, role-based access, and a smooth learning experience.
 
-## Usage
+## 🛠️ Tech Stack
+React.js | Node.js | Express.js | MongoDB | Tailwind CSS | Axios | JWT
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+## ✨ Features
+- 🔐 JWT Authentication & Authorization  
+- 👨‍🎓 Role-based access (Student & Instructor)  
+- 📚 Course creation & management  
+- 💳 Razorpay payment integration (test mode)  
+- 📊 Responsive dashboards  
+- 🔄 REST API integration with secure CRUD operations  
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+## ⚙️ Installation
+1. Clone the repository  
+   git clone https://github.com/nikitashinde1705/studynotion
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+2. Install dependencies  
+   cd studynotion  
+   npm install  
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+3. Run the project  
+   npm run dev  
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+## 🌐 Live Demo
+(https://studysync-by-nikita.netlify.app/)
+## 📸 Screenshots
+(<img width="1920" height="1080" alt="Screenshot (91)" src="https://github.com/user-attachments/assets/9710a17e-2b7a-491f-84dd-0d1a3b720896" />
+)
 
-## Contributing
-
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+## 📫 Contact
+Nikita Shinde  
+Email: nikitashinde1705@gmail.com
